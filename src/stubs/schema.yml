@@ -1,0 +1,19 @@
+Models:
+  Table1Model:
+    columns:
+      id: ~
+      foo: string
+      bar: string
+
+  Table2Model:
+    columns:
+      id: ~
+      biz: string
+      baz: string
+
+Migrations:
+  Mig1:
+    columns:
+      id: ~
+      foo_mig: string
+      bar_mig: string
