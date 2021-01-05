@@ -75,6 +75,8 @@ class SketchServiceProvider extends ServiceProvider
          $this->commands([
              \Dwoodard\Sketch\Console\Commands\SketchGenerate::class,
              \Dwoodard\Sketch\Console\Commands\SketchInit::class,
+             \Laracasts\Generators\Commands\MigrationMakeCommand::class,
+             \Laracasts\Generators\Commands\PivotMigrationMakeCommand::class
          ]);
     }
 }

@@ -30,9 +30,9 @@ class SketchGenerate extends BaseSketchCommand
     public function __construct(Yaml $yaml, Schema $schema, Artisan $artisan)
     {
         parent::__construct();
-//        $this->yaml = $yaml;
-//        $this->schema = $schema;
-//        $this->artisan = $artisan;
+        $this->yaml = $yaml;
+        $this->schema = $schema;
+        $this->artisan = $artisan;
     }
 
     /**
@@ -55,31 +55,17 @@ class SketchGenerate extends BaseSketchCommand
 
                 try {
                     // Create Table with schema
-                    Artisan::call('make:migration:schema', ['name' => "create{$tableName}_table", '--create' => $tableName]);
-
-                    // if table created, check if fields added to it
-
-
+                    Artisan::call('make:migration:schema', [
+                        'name' => "create_{$tableName}_table",
+                        '--schema' => "username:string, email:string:unique"]
+                    );
 
                     //migrate
                     Artisan::call('migrate');
 
                 }
                 catch (\Exception $e){
-                    // if "class already exists." check other field to add
-                    if(str_contains( $e->getMessage(), 'class already exists' )){
-
-                        $addFields = collect();
-
-                        foreach ($columns->keys() as $field){
-                            if (!Schema::hasColumn($tableName, $field)) {
-                                $addFields->push($field);
-                            }
-                        }
-
-                        Artisan::call('make:migration', ['name' => "add_{$field}_to_{$tableName}", '--table' => $tableName]);
-
-                    }
+                    dump($e->getMessage());
                 }
             })
         ;
