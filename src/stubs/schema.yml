@@ -1,19 +1,26 @@
 Models:
-  Table1Model:
+  post:
     columns:
-      id: ~
-      foo: string
-      bar: string
+      title: string
+      body: text
+      test: string
+      test2: string
+      test3: string
+  #      test4: string
 
-  Table2Model:
+  tag:
     columns:
-      id: ~
       biz: string
       baz: string
+
+Pivot:
+  post_tag:
+    columns:
+      tag_id:
+      post_id:
 
 Migrations:
   Mig1:
     columns:
-      id: ~
       foo_mig: string
       bar_mig: string
