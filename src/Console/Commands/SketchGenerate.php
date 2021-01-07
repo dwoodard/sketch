@@ -64,14 +64,6 @@ class SketchGenerate extends BaseSketchCommand
                 });
 
 
-
-
-
-
-
-
-
-
                 // if table exists check if all fields from sketch schema are there
                 // if they are not add them other wise skip
 
@@ -81,8 +73,8 @@ class SketchGenerate extends BaseSketchCommand
                     : $this->createFields($tableName, $columns, $fields);
 
 
-//                $this->addFieldsMigration();
-//                $this->removeFieldsMigration();
+                # TODO: $this->addFieldsMigration(); LINE:144
+                # TODO: $this->removeFieldsMigration(); LINE:166
 
 
             })
